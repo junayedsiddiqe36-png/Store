@@ -1,0 +1,36 @@
+# Netlify — কোনো build লাগবে না, রিপোর রুট থেকেই সার্ভ হবে।
+[build]
+  command = ""
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# ============================================================
+#  🔴 Google লগইন ঠিক রাখতে নিচের প্রক্সি দুটো জরুরি
+#  PASTE_PROJECT_ID জায়গায় আপনার Firebase Project ID বসান।
+#  এতে লগইন আপনার নিজের ডোমেইন দিয়েই হবে — firebaseapp.com-এ
+#  আর যেতে হবে না, তাই ISP-র DNS সমস্যাও এড়ানো যায়।
+# ============================================================
+[[redirects]]
+  from = "/__/auth/*"
+  to = "https://bot-store-b1781.firebaseapp.com/__/auth/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/__/firebase/*"
+  to = "https://bot-store-b1781.firebaseapp.com/__/firebase/:splat"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/firebase-config.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
