@@ -6,7 +6,7 @@
 
 window.FIREBASE_CONFIG = {
   apiKey: "AIzaSyAoyZ5BrE4tPOW3pVaF-g5Xdm_bt5xQqi4",
-  authDomain: "http://bot-store-b1781.firebaseapp.com",
+  authDomain: "https://bot-store-b1781.firebaseapp.com",
   projectId: "bot-store-b1781",
   storageBucket: "http://bot-store-b1781.firebasestorage.app",
   messagingSenderId: "980515760381",
